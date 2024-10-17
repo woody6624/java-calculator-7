@@ -7,7 +7,7 @@ public class Delimiter {
         StringBuilder delimiters = new StringBuilder(default_delimiters);
 
         if (inputData.startsWith("//")) {
-            int newLineIndex = inputData.indexOf("\n");
+            int newLineIndex = inputData.indexOf("\\n");
 
             // '\n'이 없다면 에러 -> 커스텀 구분자 형식에 어긋남
             if (newLineIndex == -1) {
@@ -15,6 +15,7 @@ public class Delimiter {
             }
 
             char customDelimiter = inputData.charAt(2);
+            //System.out.println("커스텀 구분자" + customDelimiter);
             // 빈 구분자에 대한 에러 처리
             if (customDelimiter == '\\') {
                 throw new IllegalArgumentException("잘못된 입력입니다.");
@@ -25,6 +26,7 @@ public class Delimiter {
             }
             // 커스텀 구분자를 추가
             delimiters.append("|").append(customDelimiter);
+            default_delimiters = delimiters.toString();
             // 구분자를 제외한 나머지 문자열 반환
             return inputData.substring(5);
         } else {
@@ -32,4 +34,9 @@ public class Delimiter {
             return inputData;
         }
     }
+
+    public String getDelimiters() {
+        return default_delimiters;
+    }
+
 }
