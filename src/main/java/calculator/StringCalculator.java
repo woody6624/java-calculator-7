@@ -22,7 +22,7 @@ public class StringCalculator {
         for (String number : numbers) {
             //System.out.println(number + "\n");
             if (!validator.checkPositiveInt(number)) {
-                throw new IllegalArgumentException("");
+                throw new IllegalArgumentException("검증 로직을 통과 못하였습니다.");
             }
             // 문자열을 정수로 파싱하여 합산
             sum += Integer.parseInt(number);
