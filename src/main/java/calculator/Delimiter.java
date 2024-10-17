@@ -1,10 +1,10 @@
 package calculator;
 
 public class Delimiter {
-    private String default_delimiters = ",|:";
+    private String set_delimiters = ",|:";
 
     public String addDelimiter(String inputData) {
-        StringBuilder delimiters = new StringBuilder(default_delimiters);
+        StringBuilder delimiters = new StringBuilder(set_delimiters);
 
         if (inputData.startsWith("//")) {
             int newLineIndex = inputData.indexOf("\\n");
@@ -26,7 +26,7 @@ public class Delimiter {
             }
             // 커스텀 구분자를 추가
             delimiters.append("|").append(customDelimiter);
-            default_delimiters = delimiters.toString();
+            set_delimiters = delimiters.toString();
             // 구분자를 제외한 나머지 문자열 반환
             return inputData.substring(5);
         } else {
@@ -36,7 +36,7 @@ public class Delimiter {
     }
 
     public String getDelimiters() {
-        return default_delimiters;
+        return set_delimiters;
     }
 
 }
